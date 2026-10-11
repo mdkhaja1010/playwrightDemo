@@ -15,9 +15,6 @@
     let orderPlacedPage:OrderPlacedPage
     let myOrdersListPage:MyOrderslistPage
 
-    /* const url:string="https://rahulshettyacademy.com/client/#/auth/login"
-    const username:string='mohammedkhaja632@gmail.com'
-    const passwod:string="Kh@ja1997" */
 
     test.beforeEach("launching Application ",async ({page})=>{
     lp=new LoginPage(page)
