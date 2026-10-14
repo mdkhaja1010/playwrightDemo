@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","10903","Login into application using correct credentials using ENV variables","chromium","2026-10-13","passed","2026-10-13","","loginPageENV.spec.ts","",""
+"","12948","@regression Login into application using incorrect credentials","chromium","2026-10-13","passed","2026-10-13","","loginPage.spec.ts","",""
+"","5678","Login into application using correct credentials using Excel khajamd@yopmail.com","chromium","2026-10-13","passed","2026-10-13","","loginPageExcelDD.spec.ts","",""
+"","12467","@smoke @regression Login into application using correct credentials","chromium","2026-10-13","passed","2026-10-13","","loginPage.spec.ts","",""
+"","28916","end to end shopping for product","chromium","2026-10-13","passed","2026-10-13","","productend2endShopping.spec.ts","",""
+"","6312","Login into application using correct credentials using Excel khajamd1@yopmail.com","chromium","2026-10-13","passed","2026-10-13","","loginPageExcelDD.spec.ts","",""

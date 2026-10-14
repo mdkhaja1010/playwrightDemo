@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-     "fullTest": "npx playwright test",
+    "fullTest": "npx playwright test",
     "test:qa": "set ENV=qa&& npx playwright test",
     "test:prod": "set ENV=prod&& npx playwright test",
     "test:stg": "set ENV=stg&& npx playwright test",
@@ -18,8 +18,10 @@
   "devDependencies": {
     "@playwright/test": "^1.62.1",
     "@types/node": "^26.4.0",
-    "xlsx": "^0.18.5",
-    "dotenv": "^17.4.2"
+    "allure-commandline": "^2.46.1",
+    "allure-playwright": "^3.13.0",
+    "dotenv": "^17.4.2",
+    "xlsx": "^0.18.5"
   },
   "dependencies": {
     "dotenv": "^17.4.2"
