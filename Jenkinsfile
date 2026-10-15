@@ -24,8 +24,8 @@ pipeline {
         sh 'npx playwright install --with-deps chromium'
       }
     }
+
     stage('Run QA regression tests') {
-      steps {
       steps {
         sh 'npm run regresionTest:qa'
       }
