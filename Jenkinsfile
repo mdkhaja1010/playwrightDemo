@@ -9,25 +9,28 @@ pipeline {
   stages {
     stage('Clean previous run artifacts') {
       steps {
-        sh 'rm -rf allure-results allure-report playwright-report test-results'
+        bat 'if exist allure-results rmdir /s /q allure-results'
+        bat 'if exist allure-report rmdir /s /q allure-report'
+        bat 'if exist playwright-report rmdir /s /q playwright-report'
+        bat 'if exist test-results rmdir /s /q test-results'
       }
     }
 
     stage('Install dependencies') {
       steps {
-        sh 'npm ci'
+        bat 'npm ci'
       }
     }
 
     stage('Install Playwright browsers') {
       steps {
-        sh 'npx playwright install --with-deps chromium'
+        bat 'npx playwright install chromium'
       }
     }
 
     stage('Run QA regression tests') {
       steps {
-        sh 'npm run regresionTest:qa'
+        bat 'npm run regresionTest:qa'
       }
     }
   }
@@ -36,8 +39,8 @@ pipeline {
     always {
       script {
         try {
-          if (fileExists('allure-results') && fileExists('node_modules/.bin/allure')) {
-            sh './node_modules/.bin/allure generate allure-results --clean --output allure-report'
+          if (fileExists('allure-results') && fileExists('node_modules/.bin/allure.cmd')) {
+            bat 'node_modules\\.bin\\allure.cmd generate allure-results --clean --output allure-report'
           } else {
             echo 'Allure results or the local Allure CLI are unavailable; skipping report generation.'
           }
