@@ -1,0 +1,78 @@
+
+name: Playwright QA Regression
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa-regression:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 30
+
+    env:
+      CI: true
+      ENV: qa
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Clean previous run artifacts
+        shell: pwsh
+        run: |
+          $paths = @(
+            "allure-results",
+            "allure-report",
+            "playwright-report",
+            "test-results"
+          )
+
+          foreach ($path in $paths) {
+            if (Test-Path $path) {
+              Remove-Item $path -Recurse -Force
+            }
+          }
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+
+      - name: Run QA regression tests
+        run: npm run regresionTest:qa
+
+      - name: Generate Allure report
+        if: always()
+        shell: pwsh
+        run: |
+          if ((Test-Path "allure-results") -and
+              (Test-Path "node_modules/.bin/allure.cmd")) {
+            npx allure generate allure-results --clean --output allure-report
+          } else {
+            Write-Host "Allure results or CLI unavailable."
+          }
+
+      - name: Upload test reports and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-qa-reports
+          path: |
+            allure-results/
+            allure-report/
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 14
