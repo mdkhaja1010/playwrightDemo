@@ -53,9 +53,10 @@ jobs:
       - name: Run QA regression tests
         run: npm run regresionTest:qa
 
+      
       - name: Generate Allure report
         if: always()
-        shell: pwsh
+        shell: powershell
         run: |
           if ((Test-Path "allure-results") -and
               (Test-Path "node_modules/.bin/allure.cmd")) {
@@ -63,6 +64,7 @@ jobs:
           } else {
             Write-Host "Allure results or CLI unavailable."
           }
+
 
       - name: Upload test reports and results
         if: always()
