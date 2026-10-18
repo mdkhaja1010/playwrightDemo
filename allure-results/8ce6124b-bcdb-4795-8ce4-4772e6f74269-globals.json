@@ -1,0 +1,1 @@
+{"attachments":[],"errors":[{"message":"Launch application and login failed: Error: page.goto: url: expected string, got undefined","trace":"Error: page.goto: url: expected string, got undefined\n    at LoginPage.launchURL (D:\\ownPracticePlaywright\\pages\\LoginPage.ts:22:25)\n    at D:\\ownPracticePlaywright\\tests\\end2endproduct.spec.ts:5:21","timestamp":1792331464331}]}

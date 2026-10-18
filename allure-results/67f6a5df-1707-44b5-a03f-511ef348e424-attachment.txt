@@ -1,0 +1,9 @@
+Product count: 3
+Product 0: ADIDAS ORIGINAL
+Product found: ADIDAS ORIGINAL
+View button clicked
+order placed
+****************************** 6ad4d1e893b084c41f57b95f
+Downloaded File: order-invoice_khajamd1.csv
+Order: 6ad4d1e893b084c41f57b95f
+File: order-invoice_khajamd1.csv

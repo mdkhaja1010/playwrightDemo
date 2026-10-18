@@ -51,7 +51,7 @@ jobs:
         run: npx playwright install chromium
 
       - name: Run QA regression tests
-        run: npm run regresionTest:qa
+        run: npm run businessFlowTest:qa
 
       
       - name: Generate Allure report

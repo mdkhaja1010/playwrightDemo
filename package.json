@@ -9,7 +9,8 @@
     "test:stg": "set ENV=stg&& npx playwright test",
     "smokeTest:qa": "set ENV=qa&& npx playwright test -g @smoke",
     "regresionTest:qa": "set ENV=qa&& npx playwright test -g @regression",
-    "regresionAPI": "npx playwright test -g @api"
+    "regresionAPI": "npx playwright test -g @api",
+    "businessFlowTest:qa": "set ENV=prod&& npx playwright test end2endproduct.spec.ts"
   },
   "keywords": [],
   "author": "",

@@ -9,9 +9,23 @@ import path from 'path';
 
 const ENV_NAME= process.env.ENV || 'prod'
 
-console.log(ENV_NAME)
+console.log("Environment: ", ENV_NAME) 
 
-dotenv.config({path:path.join(__dirname, "testdata",`${ENV_NAME}.env`)})
+const envPath = path.join(
+    __dirname,
+    'testdata',
+    `${ENV_NAME}.env`
+);
+const result = dotenv.config({ path: envPath });
+
+if (result.error) {
+    throw new Error(`Environment file not found: ${envPath}`);
+}
+console.log('Username loaded:', Boolean(process.env.uName));
+console.log('URL loaded:', Boolean(process.env.URL));
+
+
+//dotenv.config({path:path.join(__dirname, "testdata",`${ENV_NAME}.env`)})
 
 console.log(process.env.uName)
 // On powershell terminal use:
