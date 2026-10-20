@@ -1,0 +1,15 @@
+Access token generated successfully
+Response body: {
+  id: 28,
+  staffName: 'Ramesh',
+  role: 'Invoice Manager',
+  email: 'Ramesh@gmail.com'
+}
+Staff member created with ID: 28
+*********************Updating staff member with ID: 28 *********************
+Update Response body: {
+  id: 28,
+  staffName: 'RameshU',
+  role: 'Invoice Manager',
+  email: 'Ramesh@gmail.com'
+}

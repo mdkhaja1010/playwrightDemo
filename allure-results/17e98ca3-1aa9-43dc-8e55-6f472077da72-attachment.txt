@@ -1,0 +1,11 @@
+Product count: 3
+Product 0: ADIDAS ORIGINAL
+Product found: ADIDAS ORIGINAL
+View button clicked
+order placed
+****************************** 6ad779d093b084c41f5c639a
+Downloaded File: order-invoice_khajamd1.csv
+Order: 6ad779d093b084c41f5c639a
+File: order-invoice_khajamd1.csv
+Count of order IDs: 4
+{ orderId: '6ad779d093b084c41f5c639a' }

@@ -1,0 +1,15 @@
+Access token generated successfully
+Response body: {
+  id: 14,
+  staffName: 'nayeem',
+  role: 'admin',
+  email: 'nayeem@example.com'
+}
+Staff member created with ID: 14
+*********************getting staff member with ID: 14 *********************
+Get Response body: {
+  id: 14,
+  staffName: 'nayeem',
+  role: 'admin',
+  email: 'nayeem@example.com'
+}

@@ -1,0 +1,8 @@
+Access token generated successfully
+Response body: {
+  id: 46,
+  staffName: 'Suresh',
+  role: 'Lab Incharge',
+  email: 'suresh@gmail.com'
+}
+Staff member created with ID: 46

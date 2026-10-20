@@ -1,0 +1,7 @@
+Access token generated successfully
+{
+  id: 20,
+  staffName: 'alex',
+  role: 'Lab Technician',
+  email: 'alex@gmail.com'
+}

@@ -1,0 +1,128 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: staffAPICopy.spec.ts >> deleting staff details
+- Location: tests\staffAPICopy.spec.ts:192:5
+
+# Error details
+
+```
+SyntaxError: Unexpected end of JSON input
+```
+
+# Test source
+
+```ts
+  118 |     })
+  119 |     const respondBody= await response.json()
+  120 |     console.log("Response body:", respondBody)
+  121 |     expect(response.status()).toBe(201)
+  122 |     staffId=Number(respondBody.id)
+  123 |     expect(Number.isInteger(staffId) && staffId > 0).toBeTruthy();
+  124 |     console.log("Staff member created with ID:", staffId)
+  125 |     console.log("*********************Updating staff member with ID:", staffId ,"*********************")
+  126 |     const UpdateResponse=await request.put(tokenDetails.baseURL+"/staff/"+staffId,{
+  127 |         headers:{
+  128 |             "Authorization":"Bearer "+token,
+  129 |             "Content-Type":"application/json"
+  130 |         },
+  131 |         data:{
+  132 |             "staffName":user.UpdatedstaffName,
+  133 |             "email":user.email,
+  134 |             "role":user.role
+  135 |         }
+  136 |     })
+  137 |     const updateResponseBody = await UpdateResponse.json()
+  138 |     console.log("Update Response body:", updateResponseBody)
+  139 |     expect(UpdateResponse.status()).toBe(200)
+  140 |     const query = 'select * from staff where id=?'
+  141 |     //db validation
+  142 |     const dbResponse = await DBConfiguration.executeQuery<{ id: number; staff_name: string, email: string, role: string }>(
+  143 |         query,
+  144 |         [staffId]
+  145 |     );
+  146 |     expect(dbResponse).toHaveLength(1)
+  147 |     const dbData = dbResponse[0];
+  148 |     expect(Number(dbData.id)).toBe(Number(staffId));
+  149 |     expect(dbData.staff_name).toBe(user.UpdatedstaffName);
+  150 |     expect(dbData.email).toBe(user.email);
+  151 |     expect(dbData.role).toBe(user.role);
+  152 |     console.log("Database Validation successful for staff member with ID:", staffId);
+  153 |     const deleteQuery = 'DELETE FROM staff WHERE id = ?'
+  154 |     await DBConfiguration.executeQuery(deleteQuery, [staffId]);
+  155 |     console.log(`Staff member with ID ${staffId} deleted from the database.`);
+  156 | })}
+  157 | 
+  158 | test(`getting staff details`, async  ({request})=>{
+  159 |     let staffId:number
+  160 |     const response=await request.post(tokenDetails.baseURL+"/staff",{
+  161 |         headers:{
+  162 |             "Authorization":"Bearer "+token,
+  163 |             "Content-Type":"application/json"
+  164 |         },
+  165 |         data:{
+  166 |             "staffName":"nayeem",
+  167 |             "email":"nayeem@example.com",
+  168 |             "role":"admin"
+  169 |         }
+  170 |     })
+  171 |     const respondBody= await response.json()
+  172 |     console.log("Response body:", respondBody)
+  173 |     expect(response.status()).toBe(201)
+  174 |     staffId=Number(respondBody.id)
+  175 |     expect(Number.isInteger(staffId) && staffId > 0).toBeTruthy();
+  176 |     console.log("Staff member created with ID:", staffId)
+  177 |     console.log("*********************getting staff member with ID:", staffId ,"*********************")
+  178 |     const getResponse=await request.get(tokenDetails.baseURL+"/staff/"+staffId,{
+  179 |         headers:{
+  180 |             "Authorization":"Bearer "+token,
+  181 |             "Content-Type":"application/json"
+  182 |         }
+  183 |     })
+  184 |     const getResponseBody = await getResponse.json()
+  185 |     console.log("Get Response body:", getResponseBody)
+  186 |     expect(getResponse.status()).toBe(200)
+  187 |     const deleteQuery = 'DELETE FROM staff WHERE id = ?'
+  188 |     await DBConfiguration.executeQuery(deleteQuery, [staffId]);
+  189 |     console.log(`Staff member with ID ${staffId} deleted from the database.`);
+  190 | })
+  191 | 
+  192 | test(`deleting staff details`, async  ({request})=>{
+  193 |     let staffId:number
+  194 |     const response=await request.post(tokenDetails.baseURL+"/staff",{
+  195 |         headers:{
+  196 |             "Authorization":"Bearer "+token,
+  197 |             "Content-Type":"application/json"
+  198 |         },
+  199 |         data:{
+  200 |             "staffName":"nayeem",
+  201 |             "email":"nayeem@example.com",
+  202 |             "role":"admin"
+  203 |         }
+  204 |     })
+  205 |     const respondBody= await response.json()
+  206 |     console.log("Response body:", respondBody)
+  207 |     expect(response.status()).toBe(201)
+  208 |     staffId=Number(respondBody.id)
+  209 |     expect(Number.isInteger(staffId) && staffId > 0).toBeTruthy();
+  210 |     console.log("Staff member created with ID:", staffId)
+  211 |     console.log("*********************Deleting staff member with ID:", staffId ,"*********************")
+  212 |     const getResponse=await request.delete(tokenDetails.baseURL+"/staff/"+staffId,{
+  213 |         headers:{
+  214 |             "Authorization":"Bearer "+token,
+  215 |             "Content-Type":"application/json"
+  216 |         }
+  217 |     })
+> 218 |     const getResponseBody = await getResponse.json()
+      |                             ^ SyntaxError: Unexpected end of JSON input
+  219 |     console.log("Get Response body:", getResponseBody)
+  220 |     expect(getResponse.status()).toBe(200)
+  221 |     
+  222 | })
+  223 | 
+```

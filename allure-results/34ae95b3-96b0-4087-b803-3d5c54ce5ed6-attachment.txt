@@ -1,0 +1,33 @@
+Access token generated successfully
+[
+  {
+    id: 16,
+    staffName: 'johnsena',
+    role: 'TeamLead',
+    email: 'john@gmail.com'
+  },
+  {
+    id: 17,
+    staffName: 'somesh',
+    role: 'HOD',
+    email: 'somesh@gmail.com'
+  },
+  {
+    id: 20,
+    staffName: 'alex',
+    role: 'Lab Technician',
+    email: 'alex@gmail.com'
+  },
+  {
+    id: 21,
+    staffName: 'alex',
+    role: 'Lab Technician',
+    email: 'alex@gmail.com'
+  },
+  {
+    id: 22,
+    staffName: 'johnsena',
+    role: 'TeamLead',
+    email: 'john@gmail.com'
+  }
+]

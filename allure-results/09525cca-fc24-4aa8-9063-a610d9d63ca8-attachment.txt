@@ -1,0 +1,17 @@
+Access token generated successfully
+Response body: {
+  id: 19,
+  staffName: 'Ramesh',
+  role: 'Invoice Manager',
+  email: 'Ramesh@gmail.com'
+}
+Staff member created with ID: 19
+*********************Updating staff member with ID: 19 *********************
+Update Response body: {
+  id: 19,
+  staffName: 'RameshU',
+  role: 'Invoice Manager',
+  email: 'Ramesh@gmail.com'
+}
+Database connection closed
+Database connection closed after all tests.

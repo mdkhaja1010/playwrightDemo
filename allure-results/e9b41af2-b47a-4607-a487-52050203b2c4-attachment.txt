@@ -1,0 +1,16 @@
+Access token generated successfully
+Response body: {
+  id: 55,
+  staffName: 'nayeem',
+  role: 'admin',
+  email: 'nayeem@example.com'
+}
+Staff member created with ID: 55
+*********************getting staff member with ID: 55 *********************
+Get Response body: {
+  id: 55,
+  staffName: 'nayeem',
+  role: 'admin',
+  email: 'nayeem@example.com'
+}
+Staff member with ID 55 deleted from the database.

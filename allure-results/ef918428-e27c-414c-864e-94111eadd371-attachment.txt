@@ -1,0 +1,9 @@
+Access token generated successfully
+Response body: {
+  id: 72,
+  name: 'nayeem',
+  department: 'ECE',
+  email: 'nayeem@example.com'
+}
+employee member created with ID: 72
+*********************Deleting Employee member with ID: 72 *********************

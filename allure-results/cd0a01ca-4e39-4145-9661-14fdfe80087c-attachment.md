@@ -1,0 +1,70 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: staffAPICopy.spec.ts >> creating staff member Ramesh
+- Location: tests\staffAPICopy.spec.ts:43:5
+
+# Error details
+
+```
+Error: Access denied for user ''@'localhost' (using password: NO)
+```
+
+# Test source
+
+```ts
+  1  |     import mysql from 'mysql2/promise';
+  2  |     import dotenv from 'dotenv';
+  3  | 
+  4  |     dotenv.config();
+  5  | 
+  6  |     export class DBConfiguration {
+  7  |         private static pool = mysql.createPool({
+  8  |             host: process.env.DB_HOST || 'localhost',
+  9  |             port: Number(process.env.DB_PORT || 3306),
+  10 |             user: process.env.DB_USER,
+  11 |             password: process.env.DB_PASSWORD,
+  12 |             database: process.env.DB_NAME,
+  13 |             waitForConnections: true,
+  14 |             connectionLimit: 5
+  15 |         })
+  16 | 
+  17 |     static async getConnection(): Promise<mysql.PoolConnection> {
+  18 |             const connection = await this.pool.getConnection();
+  19 | 
+  20 |             try {
+  21 |                 await connection.ping();
+  22 |                 console.log('Database connected successfully');
+  23 |                 return connection;
+  24 |             } catch (error) {
+  25 |                 connection.release();
+  26 |                 throw error;
+  27 |             }
+  28 |         }
+  29 | 
+  30 |         static async executeQuery<T>(
+  31 |             query: string,
+  32 |             params: unknown[] = []
+  33 |         ): Promise<T[]> {
+> 34 |             const [rows] = await this.pool.execute(
+     |                                            ^ Error: Access denied for user ''@'localhost' (using password: NO)
+  35 |                 query,
+  36 |                 params as (string | number | boolean | null | Date)[]
+  37 |             );
+  38 | 
+  39 |             return rows as T[];
+  40 |         }
+  41 | 
+  42 |         // Close database pool
+  43 |         static async closeDB(): Promise<void> {
+  44 |             await this.pool.end();
+  45 |             console.log('Database connection closed');
+  46 |         }
+  47 | 
+  48 |     }
+```

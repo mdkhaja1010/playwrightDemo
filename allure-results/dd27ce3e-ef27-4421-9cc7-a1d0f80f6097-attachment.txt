@@ -1,0 +1,3 @@
+Access token generated successfully
+Response body: { id: 34, staffName: null, role: null, email: null }
+Staff member created with ID: 34

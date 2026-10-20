@@ -1,0 +1,10 @@
+Access token generated successfully
+Response body: {
+  id: 32,
+  staffName: 'alex',
+  role: 'Lab Technician',
+  email: 'alex@gmail.com'
+}
+Staff member created with ID: 32
+Staff member with ID 32 deleted from the database.
+Database connection closed

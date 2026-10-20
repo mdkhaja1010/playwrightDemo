@@ -1,0 +1,3 @@
+Access token generated successfully
+Response body: { id: 1, staffName: 'Rahul', role: 'PT', email: 'Rahul@gmail.com' }
+Staff member created with ID: 1

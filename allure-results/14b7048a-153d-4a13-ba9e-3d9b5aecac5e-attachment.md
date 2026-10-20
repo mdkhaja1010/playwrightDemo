@@ -1,0 +1,23 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: staffAPICopy.spec.ts >> getting staff Details
+- Location: tests\staffAPICopy.spec.ts:36:5
+
+# Error details
+
+```
+Error: apiRequestContext.get: connect ECONNREFUSED ::1:8080
+Call log:
+  - → GET http://localhost:8080/api/staff
+    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.7922.34 Safari/537.36
+    - accept: */*
+    - accept-encoding: gzip,deflate,br
+    - Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqdDBKRjFyLWRVN0tiTzFaTTZXcXVLc211U2tLMDhmUEotQnQ3bUkwSWRRIn0.eyJleHAiOjE3OTI0MjQ3MzgsImlhdCI6MTc5MjQyNDQzOCwianRpIjoiMmI4YTBmNDctMjNjMC00NWRkLTk5NDUtYzVkOWNmODc1NTJmIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL3JlYWxtcy9teXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImJiNThkZjcwLWVhMDgtNDJjZi1hODVmLTVmNjA5MTQxZmNkYyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im15Y2xpZW50MSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtbXlyZWFsbSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjAuMSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LW15Y2xpZW50MSIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuMC4xIiwiY2xpZW50X2lkIjoibXljbGllbnQxIn0.Z9Bsr12J9G18dlzQCo1ZG9bXXp6udNyPy9Gyz52eqSTGDcwov-dxK29WCS0NOK2eiZ0WaINcWsSyXiJYzSDbxMqRbZKRWi1FA_ndVNkM2fV-L2nyU-VeK4K1k9z9Z4K3vhtqRx5yC09ybwnhGjULZTbvRrejjbY5236IEiLtwR1ZbINTSdzkWNGQSjIa1fil9stvEN83dDUOftORceW8k6QXmnF8l8638vvYC5_uQc_VyWWBj6SMiineVNtuRTGfBv1ugmaT07uP1VzFxFWZ6cCQpwNHavDfndSov5bx0v2zJPx69MfltqI1dVxqtx9nrqIpE13Q8jE-5wk4CoJ7hA
+
+```

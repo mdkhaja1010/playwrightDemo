@@ -1,0 +1,73 @@
+name: Playwright API QA Regression
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  api-qa-regression:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 30
+
+    env:
+      CI: true
+      ENV: db
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Clean previous run artifacts
+        shell: powershell
+        run: |
+          $paths = @(
+            "allure-results",
+            "allure-report",
+            "playwright-report",
+            "test-results"
+          )
+          foreach ($path in $paths) {
+            if (Test-Path $path) {
+              Remove-Item $path -Recurse -Force
+            }
+          }
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run API QA tests
+        run: npm run apiSuiteflowTest:DB
+
+      - name: Generate Allure report
+        if: always()
+        shell: powershell
+        run: |
+          if ((Test-Path "allure-results") -and
+              (Test-Path "node_modules/.bin/allure.cmd")) {
+            npx allure generate allure-results --clean --output allure-report
+          } else {
+            Write-Host "Allure results or CLI unavailable."
+          }
+
+      - name: Upload API reports and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-api-qa-reports
+          path: |
+            allure-results/
+            allure-report/
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 14

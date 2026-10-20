@@ -10,7 +10,9 @@
     "smokeTest:qa": "set ENV=qa&& npx playwright test -g @smoke",
     "regresionTest:qa": "set ENV=qa&& npx playwright test -g @regression",
     "regresionAPI": "npx playwright test -g @api",
-    "businessFlowTest:qa": "set ENV=prod&& npx playwright test end2endproduct.spec.ts"
+    "businessFlowTest:qa": "set ENV=prod&& npx playwright test end2endproduct.spec.ts",
+    "apiSuiteflowTest:qa": "set ENV=db&& npx playwright test staffAPI.spec.ts",
+    "apiSuiteflowTest:DB": "set ENV=db&& npx playwright test -g @api"
   },
   "keywords": [],
   "author": "",
@@ -18,13 +20,15 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.62.1",
-    "@types/node": "^26.4.0",
+    "@types/node": "^26.6.5",
     "allure-commandline": "^2.46.1",
     "allure-playwright": "^3.13.0",
     "dotenv": "^17.4.2",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "mysql2": "^3.24.6"
   },
   "dependencies": {
-    "dotenv": "^17.4.2"
+    "dotenv": "^17.4.2",
+    "mysql2": "^3.24.6"
   }
 }

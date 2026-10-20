@@ -1,0 +1,5 @@
+Access token generated successfully
+Response body: { id: 9, staffName: 'Rahul', role: 'PT', email: 'Rahul@gmail.com' }
+Staff member created with ID: 9
+Database Validation successful for staff member with ID: 9
+Staff member with ID 9 deleted from the database.

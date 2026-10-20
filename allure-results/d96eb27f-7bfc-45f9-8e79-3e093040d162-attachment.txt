@@ -1,0 +1,7 @@
+Access token generated successfully
+Response body: { id: 36, name: 'Rahul', department: 'IT', email: 'Rahul@gmail.com' }
+employee member created with ID: 36
+*********************Updating employee member with ID: 36 *********************
+Update Response body: { id: 36, name: 'RahulU', department: 'IT', email: 'Rahul@gmail.com' }
+Database Validation successful for employeeempId member with ID: 36
+employee member with ID 36 deleted from the database.
